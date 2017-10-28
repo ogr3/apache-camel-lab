@@ -18,6 +18,7 @@
     <modules>
         <module>camel-demo</module>
         <module>labb-1</module>
+        <module>hawtio-debug</module>
     </modules>
 
     <parent>
