@@ -6,6 +6,9 @@
     <groupId>se.caglabs.camel</groupId>
     <artifactId>camel-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>../labb-2</module>
+    </modules>
     <packaging>pom</packaging>
 
     <name>CamelDemo</name>

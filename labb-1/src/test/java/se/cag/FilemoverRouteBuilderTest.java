@@ -1,6 +1,7 @@
 package se.cag;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
@@ -22,11 +23,12 @@ public class FilemoverRouteBuilderTest extends CamelTestSupport {
 
     @Test
     public void testMoveFile() throws Exception {
+        NotifyBuilder notifyBuilder = new NotifyBuilder(context).whenDone(1).create();
         // ProducerTemplate can send messages to routes
         template.sendBodyAndHeader(
                 "file://target/inbox", "Hello World", Exchange.FILE_NAME, "hello.txt");
-        Thread.sleep(4000);
 
+        assertTrue(notifyBuilder.matchesMockWaitTime());
         File target = new File("target/outbox/hello.txt");
         assertTrue("File not moved", target.exists());
 
