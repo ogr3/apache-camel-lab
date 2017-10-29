@@ -1,4 +1,4 @@
-package se.cag;
+package se.cag.routes;
 
 import org.apache.camel.builder.RouteBuilder;
 

@@ -1,19 +1,17 @@
-package se.cag;
+package se.cag.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
-import se.cag.routes.FilemoverRouteBuilder;
 
 import java.io.File;
 
-public class FilemoverRouteBuilderTest extends CamelTestSupport {
+public class ProcessorRouteBuilderTest extends CamelTestSupport {
 
-    // Specify the route builder that has the routes we want to test
-    protected RouteBuilder createRouteBuilder() throws Exception {
-        return new FilemoverRouteBuilder();
+    protected RouteBuilder createRouteBuilder() {
+        return new ProcessorRouteBuilder();
     }
 
     public void setUp() throws Exception {
@@ -35,7 +33,7 @@ public class FilemoverRouteBuilderTest extends CamelTestSupport {
 
         // CamelContext has nifty utilities
         String content = context.getTypeConverter()
-                        .convertTo(String.class, target);
+                .convertTo(String.class, target);
         assertEquals("Hello World", content);
 
     }
