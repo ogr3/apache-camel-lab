@@ -8,17 +8,15 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
-    <!--<groupId>com.dzone.sboot.camel</groupId>-->
-    <!--<artifactId>SpringBootCamelIntegration</artifactId>-->
-    <!--<version>0.0.1-SNAPSHOT</version>-->
-    <!--<packaging>pom</packaging>-->
     <name>SpringCamelLab</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
         <module>camel-demo</module>
-        <module>labb-1</module>
         <module>hawtio-debug</module>
+        <module>labb-1</module>
+        <module>labb-2</module>
+        <module>labb-3</module>
     </modules>
 
     <parent>
