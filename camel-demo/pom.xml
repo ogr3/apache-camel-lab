@@ -3,6 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>se.caglabs.camel</groupId>
+        <artifactId>apache-camel-lab</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
     <groupId>se.caglabs.camel</groupId>
     <artifactId>camel-demo</artifactId>
@@ -11,11 +16,6 @@
     <name>CamelDemo</name>
     <description>Demo project for Spring Boot</description>
 
-    <parent>
-        <groupId>se.caglabs.camel</groupId>
-        <artifactId>apache-camel-lab</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
-            <version>2.18.2</version>
+            <version>${camel-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

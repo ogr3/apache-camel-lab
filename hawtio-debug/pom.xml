@@ -9,10 +9,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <properties>
-    <camel-version>2.20.0</camel-version>
-    <hawtio-version>1.5.4</hawtio-version>
-  </properties>
 
   <artifactId>chapter19-hawtio-debug</artifactId>
   <name>Camel in Action 2 :: Chapter 19 :: hawtio debug</name>
