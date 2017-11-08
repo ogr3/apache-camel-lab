@@ -18,4 +18,15 @@ public class WaterContainerBean {
        waterLevel += message.getBody(Integer.class);
         System.out.println("waterLevel = " + waterLevel);
     }
+
+    @Handler
+    public void removeWater(@Body Message message){
+       waterLevel -= message.getBody(Integer.class);
+        System.out.println("waterLevel = " + waterLevel);
+    }
+    @Handler
+    public void getWaterLevel(@Body Message message){
+       message.setBody(waterLevel);
+        System.out.println("waterLevel = " + waterLevel);
+    }
 }
