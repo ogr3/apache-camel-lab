@@ -8,7 +8,7 @@ public class FilemoverRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("file://target/inbox")
-                .process(new UppercaseProcessor())
-               .to("file://target/outbox");
+            .process(new UppercaseProcessor())
+            .to("file://target/outbox");
     }
 }
