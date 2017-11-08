@@ -33,10 +33,25 @@ public class FilemoverRouteBuilderTest extends CamelTestSupport {
         File target = new File("target/outbox/hello.txt");
         assertTrue("File not moved", target.exists());
 
+    }
+
+
+    @Test
+    public void testFileContentIsUppercase() throws Exception {
+
+        NotifyBuilder notifyBuilder = new NotifyBuilder(context).whenDone(1).create();
+        // ProducerTemplate can send messages to routes
+        template.sendBodyAndHeader(
+                "file://target/inbox", "Hello World", Exchange.FILE_NAME, "hello.txt");
+
+        assertTrue(notifyBuilder.matchesMockWaitTime());
+        File target = new File("target/outbox/hello.txt");
+        assertTrue("File not moved", target.exists());
+
         // CamelContext has nifty utilities
         String content = context.getTypeConverter()
-                        .convertTo(String.class, target);
-        assertEquals("Hello World", content);
+                .convertTo(String.class, target);
+        assertEquals("HELLO WORLD", content);
 
     }
 
