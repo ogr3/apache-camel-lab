@@ -11,6 +11,5 @@ public class ProcessorRouteBuilder extends RouteBuilder {
                     System.out.println("exchange.getIn().getBody() = " + exchange.getIn().getBody());
                     })
                 .to("file://target/outbox");
-
     }
 }
