@@ -21,16 +21,12 @@ public class PositionToPlaceProcessor implements Processor{
         Map<String, Object> headers = exchange.getIn().getHeaders();
 
         if(actualObj.get("status").textValue().equals("OK")) {
-            Iterator<JsonNode> message = actualObj.get("results").elements();
-            JsonNode issPosition = message.next().get("formatted_address");
-            System.out.println("message.textValue() = " + issPosition.textValue());
-//            exchange.getOut().setHeader("position", issPosition.textValue());
+            JsonNode issPosition = actualObj.get("results").elements().next().get("formatted_address");
             headers.put("position", issPosition.textValue());
             exchange.getOut().setBody(issPosition.textValue());
         } else {
-//            exchange.getOut().setHeader("position", "iternationellt vatten");
-            headers.put("position", "iternationellt vatten");
-            exchange.getOut().setBody("iternationellt vatten");
+            headers.put("position", "Iternationellt vatten");
+            exchange.getOut().setBody("Iternationellt vatten");
 
         }
         exchange.getOut().setHeaders(headers);

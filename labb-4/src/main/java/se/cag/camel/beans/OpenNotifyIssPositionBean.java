@@ -1,18 +1,18 @@
 package se.cag.camel.beans;
 
 public class OpenNotifyIssPositionBean {
-    private Long timestamp;
+    private String timestamp;
     private String message;
     private Position iss_position;
 
     public OpenNotifyIssPositionBean() {
     }
 
-    public Long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
