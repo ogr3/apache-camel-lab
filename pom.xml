@@ -18,12 +18,13 @@
         <module>labb-1</module>
         <module>labb-2</module>
         <module>labb-3</module>
+        <module>labb-4</module>
     </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>1.5.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,26 +34,41 @@
         <java.version>1.8</java.version>
         <camel-version>2.20.1</camel-version>
         <hawtio-version>1.5.4</hawtio-version>
+        <spring-boot-version>1.5.7.RELEASE</spring-boot-version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--Spring-boot dependencies-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <!--<version>1.3.7.RELEASE</version>-->
+                <version>${spring-boot-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-version}</version>
+                <!--<version>1.3.7.RELEASE</version>-->
+                <scope>test</scope>
+            </dependency>
+
+            <!--Camel dependencies-->
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-spring-boot-starter</artifactId>
                 <version>${camel-version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>1.3.7.RELEASE</version>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-jackson</artifactId>
+                <version>${camel-version}</version>
             </dependency>
-
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>1.3.7.RELEASE</version>
-                <scope>test</scope>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-http4-starter</artifactId>
+                <version>${camel-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.camel</groupId>
