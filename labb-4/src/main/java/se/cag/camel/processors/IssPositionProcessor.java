@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IssPositionProcessor implements Processor{
 
     public void process(Exchange exchange) throws Exception {

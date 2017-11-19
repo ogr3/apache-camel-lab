@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
 import java.util.Map;
 
+@Component
 public class PositionToPlaceProcessor implements Processor{
 
     public void process(Exchange exchange) throws Exception {
