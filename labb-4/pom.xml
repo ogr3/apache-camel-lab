@@ -35,6 +35,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-http4-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies>
 
     <build>
