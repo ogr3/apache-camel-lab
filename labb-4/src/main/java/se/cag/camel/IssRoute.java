@@ -13,8 +13,9 @@ public class IssRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
+
         from("timer:foo?period=15000")
-                .to("http4://api.open-notify.org/iss-now.json")//.log("${body}")
+                .to("http4://api.open-notify.org/iss-now.json").log("rest headers: ${headers}")
 //                .unmarshal().json(JsonLibrary.Jackson, se.cag.camel.beans.OpenNotifyIssPositionBean.class)//.log("${body}")
                 .process(new IssPositionProcessor())
                 .log("${header.latitude}")
@@ -22,10 +23,11 @@ public class IssRoute extends RouteBuilder {
                 .recipientList(simple("http4://maps.googleapis.com/maps/api/geocode/json?latlng=${header.latitude},${header.longitude}&sensor=false"), "false")
                 .process(new PositionToPlaceProcessor())
                 .log("${body}")
-                .log("${headers}");
-//                .recipientList(simple("https4://api.darksky.net:443/forecast/6ed6d5d0ad208e35f2a5c0aa913fdb00/${header.latitude},${header.longitude}/"), "false")
-//                .log("${body}");
+                .log("${headers}")
+                .recipientList(simple("http4://api.openweathermap.org/data/2.5/weather?lat=${header.latitude}&lon=${header.longitude}&appid=93e711f5c2bb6f3e6dfaffc3f431858c&units=metric"), "false")
+                .log("${body}");
     }
+
 }
 
 
