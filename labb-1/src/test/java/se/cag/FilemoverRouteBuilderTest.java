@@ -24,6 +24,7 @@ public class FilemoverRouteBuilderTest extends CamelTestSupport {
 
     @Test
     public void testMoveFile() throws Exception {
+//
         NotifyBuilder notifyBuilder = new NotifyBuilder(context).whenDone(1).create();
         // ProducerTemplate can send messages to routes
         template.sendBodyAndHeader(

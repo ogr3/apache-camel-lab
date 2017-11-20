@@ -1,4 +1,4 @@
-package se.cag.camel.beans;
+package se.cag.camel;
 
 public class OpenNotifyIssPositionBean {
     private String timestamp;
