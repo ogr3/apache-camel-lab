@@ -15,11 +15,8 @@
     <modules>
         <module>camel-demo</module>
         <module>hawtio-debug</module>
-        <module>labb-1</module>
-        <module>labb-2</module>
-        <module>labb-3</module>
-        <module>labb-4</module>
-        <module>labb-5</module>
+        <module>losningar</module>
+        <module>ovningar</module>
     </modules>
 
     <parent>
