@@ -2,5 +2,6 @@
 /.idea/
 **/*.iml
 **/target
+**/active-mq
 **/target/*
 **/.DS_Store
