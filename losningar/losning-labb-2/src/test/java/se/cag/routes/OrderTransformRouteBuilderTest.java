@@ -14,6 +14,7 @@ public class OrderTransformRouteBuilderTest extends CamelTestSupport {
 
   @Test
   public void testSendMessage() throws Exception {
+    template.setDefaultEndpointUri("direct:transformOrder");
     template.sendBody(null);
 
   }

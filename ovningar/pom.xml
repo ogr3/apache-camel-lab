@@ -12,6 +12,7 @@
     <artifactId>ovningar</artifactId>
     <modules>
         <module>labb-1</module>
+        <module>labb-2</module>
     </modules>
 
 </project>
