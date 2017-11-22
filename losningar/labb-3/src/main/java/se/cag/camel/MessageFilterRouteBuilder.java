@@ -18,11 +18,11 @@ public class MessageFilterRouteBuilder extends RouteBuilder {
 
     context.start();
 
-    from("jms:inbox").id("inbox")
+    from("jms:inbox").routeId("inbox").log("Xbody: ${body}, Xheaders: ${headers}")
         .choice()
-        .when(simple("${header.test} contains 'true'"))
+        .when(header("test").isEqualTo("true")).log("Till test")
         .to("jms:test")
-        .otherwise()
+        .otherwise().log("Till order")
         .to("jms:order").id("order");
 //    from("jms:inbox").id("inbox")
 //        .filter(header("test").isNotEqualTo("true"))
