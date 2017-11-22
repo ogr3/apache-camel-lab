@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>labb-2</artifactId>
+    <artifactId>losning-labb-2</artifactId>
 
     <dependencies>
         <dependency>
