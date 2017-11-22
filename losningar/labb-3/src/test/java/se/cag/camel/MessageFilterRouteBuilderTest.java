@@ -27,7 +27,7 @@ public class MessageFilterRouteBuilderTest extends CamelTestSupport {
 //    MockEndpoint mock = getMockEndpoint("mock:jms:order");
     MockEndpoint mock2 = getMockEndpoint("mock:jms:test");
 //    mock.expectedBodiesReceived("fluff");
-    mock2.expectedBodiesReceived(new Object());
+    mock2.expectedBodiesReceived(new Object[0]);
 //    NotifyBuilder notifyBuilder = new NotifyBuilder(context).whenDone(1).create();
 
     RouteDefinition routeDefinition = context.getRouteDefinition("inbox");
