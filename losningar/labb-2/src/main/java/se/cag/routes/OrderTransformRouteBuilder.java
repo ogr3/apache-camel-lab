@@ -1,7 +1,5 @@
 package se.cag.routes;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 public class OrderTransformRouteBuilder extends RouteBuilder {
@@ -10,15 +8,8 @@ public class OrderTransformRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
-    from("direct:transformOrder").process(new OrderTransformProcessor());
-  }
-
-  public class OrderTransformProcessor
-      implements Processor {
-    public void process(Exchange exchange)
-        throws Exception {
-      // do message translation here
-    }
+    from("direct:transformOrder")
+        .to("http4://api.open-notify.org/iss-now.json").log("rest headers: ${headers}, body: ${body}").process(new OrderTransformProcessor());
   }
 
 }

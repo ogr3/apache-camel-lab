@@ -12,7 +12,6 @@ public class MessageFilterRouteBuilder extends RouteBuilder {
   public void configure() throws Exception {
     ConnectionFactory connectionFactory =
         new ActiveMQConnectionFactory("vm://localhost");
-//        CamelContext context = new DefaultCamelContext();
     CamelContext context = getContext();
     context.addComponent("jms",
         JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
