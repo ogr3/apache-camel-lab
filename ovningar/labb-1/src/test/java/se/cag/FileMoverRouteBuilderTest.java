@@ -27,13 +27,14 @@ public class FileMoverRouteBuilderTest extends CamelTestSupport {
      */
     @Test
     public void testMoveFile() throws Exception {
-//
+// Skapar en notifybuilder som lyssnar på meddelanden och triggar när ett meddelande gått igenom routen.
         NotifyBuilder notifyBuilder = new NotifyBuilder(context).whenDone(1).create();
         // ProducerTemplate can send messages to routes
         template.sendBodyAndHeader(
                 "file://target/inbox", "Hello World", Exchange.FILE_NAME, "hello.txt");
-
+// Här väntar vi på att notifyBuildern signalerar att ett meddelande gåttigenom. Då kan vi kontrollera resultatet.
         assertTrue(notifyBuilder.matchesMockWaitTime());
+
         File target = new File("target/outbox/hello.txt");
         assertTrue("File not moved", target.exists());
 
