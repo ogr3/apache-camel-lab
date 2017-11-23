@@ -10,6 +10,7 @@ public class OrderTransformRouteBuilder extends RouteBuilder {
 
 
     from("direct:transformOrder")
+            .routeId("ProcessorTransformer")
 //        gör ett rest-anrop mot "http4://api.open-notify.org/iss-now.json"
         .to("http4://api.open-notify.org/iss-now.json")
         .log("rest  body: ${body}, headers: ${headers}")
@@ -20,6 +21,7 @@ public class OrderTransformRouteBuilder extends RouteBuilder {
 //    Gör om transformeringen genom att ersätta processorn med en böna
 
     from("direct:transformOrderWithBean")
+            .routeId("BeanTransformer")
 //        gör ett rest-anrop mot "http4://api.open-notify.org/iss-now.json"
         .to("http4://api.open-notify.org/iss-now.json")
         .log("rest  body: ${body}, headers: ${headers}")

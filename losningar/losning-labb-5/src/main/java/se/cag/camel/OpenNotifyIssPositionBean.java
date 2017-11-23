@@ -10,7 +10,7 @@ public class OpenNotifyIssPositionBean {
     private Position iss_position;
 
     @Data
-    public static class Position {
+    public class Position {
         private String longitude;
         private String latitude;
 
