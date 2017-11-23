@@ -37,11 +37,10 @@ public class IssRoute extends RouteBuilder {
         onException(com.fasterxml.jackson.core.JsonParseException.class).logExhaustedMessageBody(true).log(LoggingLevel.ERROR, "JsonParseException: Inforeuro site is probably down or the Json format has changed. Check the Uri response. Error message: ${exception.message}").handled(true);
         onException(com.fasterxml.jackson.databind.JsonMappingException.class).logExhaustedMessageBody(true).log(LoggingLevel.ERROR, "JsonMappingException: Inforeuro site is probably down or the Json format has changed. Check the Uri response. Error message: ${exception.message}").handled(true);
 
-        getContext().start();
 
         from("timer:foo?period=15000")
-                .to("http4://api.open-notify.org/iss-now.json").streamCaching()
-//                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false")
+//                .to("http4://api.open-notify.org/iss-now.json").streamCaching()
+                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false")
             .log("rest headers: ${headers}")
 //                .unmarshal(jsonDataFormat).log("${body}")
 //                .process(new IssPositionProcessor())
@@ -56,6 +55,7 @@ public class IssRoute extends RouteBuilder {
                 .recipientList(simple("https4://api.openweathermap.org/data/2.5/weather?lat=${header.latitude}&lon=${header.longitude}&appid=93e711f5c2bb6f3e6dfaffc3f431858c&units=metric"), "false")
                 .process(weatherProcessor)
                 .log(LoggingLevel.INFO, "${headers}");
+
     }
 
 }
