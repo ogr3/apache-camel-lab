@@ -38,10 +38,12 @@ public class IssRoute extends RouteBuilder {
         onException(com.fasterxml.jackson.databind.JsonMappingException.class).logExhaustedMessageBody(true).log(LoggingLevel.ERROR, "JsonMappingException: Inforeuro site is probably down or the Json format has changed. Check the Uri response. Error message: ${exception.message}").handled(true);
 
         from("timer:foo?period=15000")
-                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false").log("rest headers: ${headers}")
-                .unmarshal(jsonDataFormat).log("${body}")
+                .to("http4://api.open-notify.org/iss-now.json").streamCaching()
+//                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false")
+            .log("rest headers: ${headers}")
+//                .unmarshal(jsonDataFormat).log("${body}")
 //                .process(new IssPositionProcessor())
-//                .process(issPositionProcessor)
+                .process(issPositionProcessor)
                 .log(LoggingLevel.DEBUG,"${header.latitude}")
                 .log(LoggingLevel.DEBUG,"${header.longitude}")
                 .recipientList(simple("https4://maps.googleapis.com/maps/api/geocode/json?latlng=${header.latitude},${header.longitude}&sensor=false"), "false")

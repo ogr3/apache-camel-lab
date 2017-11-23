@@ -1,7 +1,10 @@
 package se.cag.camel;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.camel.Body;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Handler;
+import org.apache.camel.Message;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 
@@ -22,10 +25,14 @@ public class MessageFilterRouteBuilder extends RouteBuilder {
         .choice()
         .when(header("test").isEqualTo("true")).log("Till test")
         .to("jms:test")
-        .otherwise().log("Till order")
-        .to("jms:order").id("order");
-//    from("jms:inbox").id("inbox")
-//        .filter(header("test").isNotEqualTo("true"))
-//        .to("jms:order");
+        .otherwise().log("Till order: ${body}")
+        .to("jms:order").bean(new PrintBean(), "printResult").id("bean");
+  }
+
+  public static class PrintBean {
+    @Handler
+    public void printResult(@Body Message message) {
+      System.out.println("Xmessage.getBody() = " + message.getBody());
+    }
   }
 }
