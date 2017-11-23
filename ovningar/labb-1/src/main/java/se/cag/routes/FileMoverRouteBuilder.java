@@ -8,6 +8,6 @@ public class FileMoverRouteBuilder extends RouteBuilder {
     public void configure() throws Exception {
         from("file://target/inbox")
 //            lägg in processorn UppercaseProcessor
-            .to("file://target/outbox");
+            .log("Camel body: ${body}");
     }
 }

@@ -22,6 +22,9 @@ public class FileMoverRouteBuilderTest extends CamelTestSupport {
         super.setUp();
     }
 
+    /**
+     * Testar att filen target/inbox/hello.txt flyttas till target/outbox/hello.txt
+     */
     @Test
     public void testMoveFile() throws Exception {
 //
@@ -37,6 +40,9 @@ public class FileMoverRouteBuilderTest extends CamelTestSupport {
     }
 
 
+    /**
+     * Testar att innehållet i filen är uppercase
+     */
     @Test
     public void testFileContentIsUppercase() throws Exception {
 
