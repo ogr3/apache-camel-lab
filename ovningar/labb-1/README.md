@@ -1,8 +1,16 @@
-## LAB 1 - Flytta fil
+##Lab 2 - Move file ##
 
-Kör testerna. De kommer att fallera och er uppgift blir att ändra i koden så att testerna går igenom.
+Hur kan flytta en, eller flera, fil från ett ställe til att annat? 
 
+**Problem:** I bland vill man helt enkelt att texten i alla filer ska vara i 'uppercase'. När en fil är processad till 
+'uppercase' vill man dessutom flytta undan den till en specifik plats på disk.
 
-1. Första testet (testMoveFile) tastar att filen target/inbox/hello.txt flyttas till target/outbox/hello.txt
+**Lösning:** Använd file componenten för att flytta undan filerna och en processor för att sätta om texten i felen till
+'uppercase'.
 
-2. Andra tester testar att innehållet i filen är uppercase
+**Testa att lösa övningen**
+
+ * med en processor
+ * om det går att ha processorn direkt i rutten
+    * anonym processor class
+    * lambda
