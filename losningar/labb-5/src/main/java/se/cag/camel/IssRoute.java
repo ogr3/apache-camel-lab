@@ -39,8 +39,8 @@ public class IssRoute extends RouteBuilder {
 
 
         from("timer:foo?period=15000")
-//                .to("http4://api.open-notify.org/iss-now.json").streamCaching()
-                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false")
+                .to("http4://api.open-notify.org/iss-now.json").streamCaching()
+//                .recipientList(simple("http4://api.open-notify.org/iss-now.json"), "false")
             .log("rest headers: ${headers}")
 //                .unmarshal(jsonDataFormat).log("${body}")
 //                .process(new IssPositionProcessor())
