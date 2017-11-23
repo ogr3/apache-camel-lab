@@ -44,16 +44,16 @@ public class IssRoute extends RouteBuilder {
 //                .unmarshal(jsonDataFormat).log("${body}")
 //                .process(new IssPositionProcessor())
                 .process(issPositionProcessor)
-                .log(LoggingLevel.DEBUG,"${header.latitude}")
-                .log(LoggingLevel.DEBUG,"${header.longitude}")
+                .log(LoggingLevel.INFO,"${header.latitude}")
+                .log(LoggingLevel.INFO,"${header.longitude}")
                 .recipientList(simple("https4://maps.googleapis.com/maps/api/geocode/json?latlng=${header.latitude},${header.longitude}&sensor=false"), "false")
 //                .process(new PositionToPlaceProcessor())
                 .process(positionToPlaceProcessor)
-                .log(LoggingLevel.DEBUG, "${body}")
-                .log(LoggingLevel.DEBUG, "${headers}")
+                .log(LoggingLevel.INFO, "${body}")
+                .log(LoggingLevel.INFO, "${headers}")
                 .recipientList(simple("https4://api.openweathermap.org/data/2.5/weather?lat=${header.latitude}&lon=${header.longitude}&appid=93e711f5c2bb6f3e6dfaffc3f431858c&units=metric"), "false")
                 .process(weatherProcessor)
-                .log(LoggingLevel.DEBUG, "${headers}");
+                .log(LoggingLevel.INFO, "${headers}");
     }
 
 }
