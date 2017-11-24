@@ -5,3 +5,4 @@
 **/active-mq
 **/target/*
 **/.DS_Store
+.camel
