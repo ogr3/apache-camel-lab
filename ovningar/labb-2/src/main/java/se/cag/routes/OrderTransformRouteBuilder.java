@@ -28,7 +28,7 @@ public class OrderTransformRouteBuilder extends RouteBuilder {
                 .log("rest  body: ${body}, headers: ${headers}")
                 .streamCaching()
 //  Använd bönan för att transformera inkommande JSON till ett objekt (OpenNotifyIssPositionBean)
-                .bean(new OrderTransformBean())
+                .bean(OrderTransformBean.class, "balle")
                 .log("Efter konvertering: ${body}");
 
     }

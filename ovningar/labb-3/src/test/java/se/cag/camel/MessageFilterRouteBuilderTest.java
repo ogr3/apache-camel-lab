@@ -34,9 +34,12 @@ public class MessageFilterRouteBuilderTest extends CamelTestSupport {
 //        assertTrue(notifyBuilder.matchesMockWaitTime());
     Thread.sleep(2000);
     template.sendBodyAndHeader("direct:message", "fluff", "test", "false");
+
 //    Fixa till testen så den inte failar
-    assertTrue("?".equals(mockBean.body));
+    assertTrue("fluff".equals(mockBean.body));
 //    assertMockEndpointsSatisfied();
+    template.sendBodyAndHeader("direct:message", "floff", "test", "true");
+    assertFalse("floff".equals(mockBean.body));
   }
 
   public class MockBean {

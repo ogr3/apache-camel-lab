@@ -23,9 +23,11 @@ public class MessageFilterRouteBuilder extends RouteBuilder {
         from("direct:message").routeId("inbox").log("Xbody: ${body}, Xheaders: ${headers}")
         .to("jms:inbox").log("Xbody: ${body}, Xheaders: ${headers}")
 //        In med en kontroll av headern här. Det finns flera möjliga alternativ
+               .filter(header("test").isEqualTo("true"))
                 .log("Till test")
                 .to("jms:test")
 //        Här ska en else-gren in
+                .filter(header("test").isEqualTo(false))
                 .to("jms:order")
                 .process(exchange -> {
                     System.out.println(exchange.getIn().getBody());
