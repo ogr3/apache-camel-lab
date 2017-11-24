@@ -7,3 +7,4 @@
 * Camel components: http://camel.apache.org/components.html 
 * Camel Simple: http://camel.apache.org/simple.html
 * Camel test: http://camel.apache.org/testing.html
+* Camel properties: http://camel.apache.org/properties.html
