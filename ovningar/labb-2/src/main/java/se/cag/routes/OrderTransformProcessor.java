@@ -12,6 +12,9 @@ public class OrderTransformProcessor
       throws Exception {
     ObjectMapper mapper = new ObjectMapper();
 //    Konvertera inkommande JSON-sträng från exchange till ett OpenNotifyIssPositionBean-objekt mha ObjectMappern
+    String body = exchange.getIn().getBody(String.class);
+    OpenNotifyIssPositionBean bean = mapper.readValue(body, OpenNotifyIssPositionBean.class);
 //    Sätt det nya objektet som body i exchange
+    exchange.getIn().setBody(bean);
   }
 }

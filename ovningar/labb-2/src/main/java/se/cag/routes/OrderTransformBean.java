@@ -12,7 +12,10 @@ public class OrderTransformBean {
   public void transform(@Body Message message) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
 //    Konvertera inkommande JSON-sträng från exchange till ett OpenNotifyIssPositionBean-objekt mha ObjectMapern
-
+    String body = message.getBody(String.class);
+    OpenNotifyIssPositionBean bean = mapper.readValue(body, OpenNotifyIssPositionBean.class);
+//    Sätt det nya objektet som body i exchange
+    message.setBody(bean);
 //    Sätt det nya objektet som body i message
   }
 }

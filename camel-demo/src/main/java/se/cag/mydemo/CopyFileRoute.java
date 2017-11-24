@@ -1,6 +1,5 @@
 package se.cag.mydemo;
 
-import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
 
 public class CopyFileRoute extends RouteBuilder {

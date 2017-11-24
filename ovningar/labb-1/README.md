@@ -1,4 +1,4 @@
-##Lab 2 - Move file ##
+##Lab 1 - Move file ##
 
 Hur kan flytta en, eller flera, fil från ett ställe til att annat? 
 
