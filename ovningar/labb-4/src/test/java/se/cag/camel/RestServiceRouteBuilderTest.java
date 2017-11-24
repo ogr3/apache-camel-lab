@@ -47,6 +47,25 @@ public class RestServiceRouteBuilderTest extends CamelTestSupport {
 //        assertTrue(notifyBuilder.matchesMockWaitTime());
 
         assertThat(waterContainerBean.getWater(), is(1));
+
+        restDefinition = context.getRouteDefinition("remove-water");
+        jmsDefinition = context.getRouteDefinition("jmsRemoveWater");
+        restDefinition.adviceWith(context, new AdviceWithRouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                replaceFromWith("direct:hitme2");
+            }
+        });
+
+        jmsDefinition.adviceWith(context, new AdviceWithRouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                weaveById("beanRemove").replace().bean(waterContainerBean, "removeWater");
+            }
+        });
+        template.sendBody("direct:hitme2", "nothing");
+
+        assertThat(waterContainerBean.getWater(), is(0));
     }
 
 

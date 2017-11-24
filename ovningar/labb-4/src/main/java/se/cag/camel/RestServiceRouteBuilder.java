@@ -27,24 +27,37 @@ public class RestServiceRouteBuilder extends RouteBuilder {
 
         from("restlet:http://0.0.0.0:18080/add-water?restletMethods=GET")
                 .routeId("add-water")
+                .transform().simple("1")
 // Skapa ett värde (= 1) som ska läggas på kön jms:queue:addWater
-                .log("add-water called");
+                .log("add-water called")
 // Lägg anropet till kön här
+                .to("jms:queue:addWater");
 
 // Upprepa mönstret ovan, men för remove-water-anropet
-
+        from("restlet:http://0.0.0.0:18080/remove-water?restletMethods=GET")
+                .routeId("remove-water")
+                .transform().simple("1")
+// Skapa ett värde (= 1) som ska läggas på kön jms:queue:addWater
+                .log("remove-water called")
+// Lägg anropet till kön här
+                .to("jms:queue:removeWater");
 // Sedan en rest-tjänst, water-level för att få aktuell vatten-nivå.
 // Här behövs ingen kö, ni kan hämta nivån direkt från  waterContainerBean
         from("restlet:http://0.0.0.0:18080/water-level?restletMethods=GET")
+                .bean(waterContainerBean, "getWaterLevel")
                 .log("water-level called");
 // bean-endpointen som anropar getWaterLevel läggs här
 
 //  Kompletera kön med anropet till waterContainerBean
         from("jms:queue:addWater")
                 .routeId("jmsAddWater")
-                .log("From JMS:${body}");
+                .log("From JMS:${body}")
+                .bean(waterContainerBean, "addWater").id("bean");
 
 // upprepa för removeWater-kön
-
+        from("jms:queue:removeWater")
+                .routeId("jmsRemoveWater")
+                .log("From JMS:${body}")
+                .bean(waterContainerBean, "removeWater").id("beanRemove");
     }
 }
